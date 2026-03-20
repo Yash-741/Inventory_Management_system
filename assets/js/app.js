@@ -4,7 +4,7 @@
  */
 
 // Configuration
-const API_ENDPOINT = 'includes/api.php';
+const API_ENDPOINT = 'api/inventory.php';
 const REFRESH_INTERVAL = 30000; // 30 seconds
 let refreshTimer;
 const pendingStockUpdates = new Set();

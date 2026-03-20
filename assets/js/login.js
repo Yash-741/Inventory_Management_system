@@ -52,7 +52,7 @@ loginForm.addEventListener('submit', function(e) {
     const formData = new FormData(this);
     
     // Send login request
-    fetch('includes/auth.php', {
+    fetch('api/auth.php', {
         method: 'POST',
         body: formData,
         credentials: 'include'

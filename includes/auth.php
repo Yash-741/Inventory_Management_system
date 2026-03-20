@@ -5,6 +5,7 @@
  */
 
 session_start();
+require_once __DIR__ . '/runtime.php';
 
 // Set proper headers
 header('Content-Type: application/json; charset=utf-8');
@@ -19,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 // Load users database
-$users_file = __DIR__ . '/users.json';
+$users_file = getRuntimeDataPath('users.json', __DIR__ . '/users.json');
 if (!file_exists($users_file)) {
     createDefaultUsers();
 }
@@ -60,7 +61,7 @@ function handleLogin() {
     }
     
     // Load users
-    $users_file = __DIR__ . '/users.json';
+    $users_file = getRuntimeDataPath('users.json', __DIR__ . '/users.json');
     $users_content = file_get_contents($users_file);
     $users = json_decode($users_content, true);
     
@@ -259,7 +260,7 @@ function createDefaultUsers() {
         ]
     ];
     
-    $users_file = __DIR__ . '/users.json';
+    $users_file = getRuntimeDataPath('users.json', __DIR__ . '/users.json');
     file_put_contents($users_file, json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
 }
 
@@ -267,19 +268,17 @@ function createDefaultUsers() {
  * Log failed login attempt
  */
 function logFailedAttempt($username) {
-    $log_file = __DIR__ . '/login_attempts.log';
     $log_entry = date('Y-m-d H:i:s') . " - Failed login attempt for user: " . htmlspecialchars($username) . " - IP: " . $_SERVER['REMOTE_ADDR'] . PHP_EOL;
-    file_put_contents($log_file, $log_entry, FILE_APPEND);
+    appendRuntimeLog('login_attempts.log', $log_entry);
 }
 
 /**
  * Log login attempts
  */
 function logLoginAttempt($username, $success = true, $type = 'login') {
-    $log_file = __DIR__ . '/login_attempts.log';
     $status = $success ? 'SUCCESS' : 'FAILED';
     $log_entry = date('Y-m-d H:i:s') . " - " . strtoupper($type) . " ($status) - User: " . htmlspecialchars($username) . " - IP: " . $_SERVER['REMOTE_ADDR'] . PHP_EOL;
-    file_put_contents($log_file, $log_entry, FILE_APPEND);
+    appendRuntimeLog('login_attempts.log', $log_entry);
 }
 
 ?>

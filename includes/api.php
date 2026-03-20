@@ -5,6 +5,8 @@
  * Uses JSON file as rough database (no MySQL required)
  */
 
+require_once __DIR__ . '/runtime.php';
+
 // Set proper headers - MUST be before any output
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE');
@@ -18,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 // Load JSON database
-$db_file = __DIR__ . '/db.json';
+$db_file = getRuntimeDataPath('db.json', __DIR__ . '/db.json');
 if (!file_exists($db_file)) {
     sendErrorResponse('Database file not found.');
 }
@@ -259,7 +261,7 @@ function handleUpdateQuantity($product_id, $quantity) {
     }
     
     try {
-        $db_file = __DIR__ . '/db.json';
+        $db_file = getRuntimeDataPath('db.json', __DIR__ . '/db.json');
         $product_exists = false;
         foreach ($database['products'] as $product) {
             if ($product['product_id'] == $product_id) {
@@ -368,7 +370,7 @@ function handleAddProduct() {
     $database['inventory'][] = $new_inventory;
 
     try {
-        $db_file = __DIR__ . '/db.json';
+        $db_file = getRuntimeDataPath('db.json', __DIR__ . '/db.json');
         saveDatabaseWithLock($db_file, $database);
         sendSuccessResponse([
             'product_id' => $new_product_id,
@@ -417,7 +419,7 @@ function handleDeleteProduct($product_id) {
     $database['inventory'] = array_values($filtered_inventory);
 
     try {
-        $db_file = __DIR__ . '/db.json';
+        $db_file = getRuntimeDataPath('db.json', __DIR__ . '/db.json');
         saveDatabaseWithLock($db_file, $database);
         sendSuccessResponse([
             'product_id' => $product_id,

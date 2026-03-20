@@ -49,6 +49,12 @@ A lightweight web-based inventory dashboard with login/session authentication an
    - `http://localhost/<project-folder>/login.html`
    - `http://localhost/<project-folder>/index.html`
 
+## Vercel Deploy
+- This project includes `vercel.json` and PHP function wrappers in `api/` for Vercel.
+- Login works on Vercel through `api/auth.php`.
+- Inventory JSON writes are redirected to the runtime temp directory, so changes are not durable across cold starts or redeploys.
+- For persistent production inventory data on Vercel, replace the JSON storage with a database or Vercel-managed storage.
+
 ## Notes
 - Current implementation is file-based (JSON), so no DB setup is required for normal usage.
 - Replace demo/plain-text passwords in `users.json` with hashed passwords for production.
