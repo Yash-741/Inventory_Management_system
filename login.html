@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login - Inventory Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/login.css">
+</head>
+<body>
+    <div class="login-orb login-orb-1" aria-hidden="true"></div>
+    <div class="login-orb login-orb-2" aria-hidden="true"></div>
+    <div class="login-grid" aria-hidden="true"></div>
+
+    <div class="login-shell">
+        <section class="login-showcase" aria-label="Platform overview">
+            <p class="eyebrow">InventoryOS</p>
+            <h1>Secure access to your inventory control workspace.</h1>
+            <p class="showcase-copy">A focused sign-in surface for teams handling daily stock movement, rapid quantity changes, and live inventory review.</p>
+            <div class="showcase-points">
+                <article>
+                    <strong>Live stock health</strong>
+                    <span>Know what is low, empty, or healthy in seconds.</span>
+                </article>
+                <article>
+                    <strong>Fast operator flow</strong>
+                    <span>Move from login to inventory actions without extra screens.</span>
+                </article>
+                <article>
+                    <strong>Single dashboard</strong>
+                    <span>Add items, update counts, and remove stale products in one place.</span>
+                </article>
+            </div>
+        </section>
+
+        <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <p class="eyebrow">Welcome Back</p>
+                <h1>Sign in to continue</h1>
+                <p class="tagline">Access the live inventory dashboard and manage stock in real time.</p>
+                <p class="home-link-wrap"><a class="home-link" href="landing.html">Go to Landing Page</a></p>
+            </div>
+
+            <form id="loginForm" class="login-form" method="POST" action="includes/auth.php">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">U</span>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Enter your username"
+                            required
+                            autocomplete="username"
+                        >
+                    </div>
+                    <span class="error-message" id="usernameError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">P</span>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            required
+                            autocomplete="current-password"
+                        >
+                        <button type="button" class="toggle-password" id="togglePassword">Show</button>
+                    </div>
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+
+                <div class="form-group checkbox">
+                    <input
+                        type="checkbox"
+                        id="remember"
+                        name="remember"
+                    >
+                    <label for="remember">Remember me</label>
+                </div>
+
+                <button type="submit" class="login-btn">Login</button>
+
+                <div class="divider">or</div>
+
+                <button type="button" class="demo-btn" id="demoBtn">Demo Login</button>
+            </form>
+
+            <div class="login-footer">
+                <p class="demo-credentials">
+                    <strong>Demo Credentials</strong>
+                    Username: <code>admin</code>
+                    Password: <code>password123</code>
+                </p>
+            </div>
+        </div>
+        </div>
+
+        <div id="errorAlert" class="alert alert-error" style="display: none;">
+            <span class="alert-icon">!</span>
+            <span id="errorMessage"></span>
+            <button type="button" class="alert-close" onclick="closeAlert()">&times;</button>
+        </div>
+
+        <div id="successAlert" class="alert alert-success" style="display: none;">
+            <span class="alert-icon">OK</span>
+            <span id="successMessage"></span>
+            <button type="button" class="alert-close" onclick="closeAlert()">&times;</button>
+        </div>
+    </div>
+
+    <script src="assets/js/login.js"></script>
+</body>
+</html>

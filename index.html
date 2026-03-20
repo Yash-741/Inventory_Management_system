@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Live Inventory Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <div class="bg-orb bg-orb-1" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb-2" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <div class="poster-container">
+        <header class="poster-header">
+            <div class="header-top">
+                <div class="brand-wrap">
+                    <p class="eyebrow">Operations Dashboard</p>
+                    <h1>Inventory command center for live stock control.</h1>
+                    <p class="tagline">Manage products, monitor stock health, and act on low inventory from one focused workspace.</p>
+                </div>
+                <div class="header-user-info">
+                    <a href="landing.html" class="home-link">Home</a>
+                    <span id="userDisplay" class="user-name">User</span>
+                    <button id="logoutBtn" class="logout-btn" type="button">Logout</button>
+                </div>
+            </div>
+            <div class="header-band" aria-label="Dashboard summary">
+                <article>
+                    <span>Realtime sync</span>
+                    <strong>Every 30 seconds</strong>
+                </article>
+                <article>
+                    <span>Primary workflow</span>
+                    <strong>Add, update, and clean stock</strong>
+                </article>
+                <article>
+                    <span>Operator focus</span>
+                    <strong>Daily inventory movement</strong>
+                </article>
+            </div>
+        </header>
+
+        <main class="poster-content">
+            <section class="live-stats" aria-labelledby="stats-heading">
+                <div class="section-head">
+                    <h2 id="stats-heading">Live Inventory Stats</h2>
+                    <p class="section-note">Track product volume and stock risk in real time.</p>
+                </div>
+                <div class="stats-grid">
+                    <article class="stat-card stat-card-total">
+                        <div class="stat-icon">TP</div>
+                        <div class="stat-info">
+                            <h3>Total Products</h3>
+                            <p class="stat-value" id="total-products">Loading...</p>
+                        </div>
+                    </article>
+
+                    <article class="stat-card stat-card-instock">
+                        <div class="stat-icon">OK</div>
+                        <div class="stat-info">
+                            <h3>In Stock</h3>
+                            <p class="stat-value" id="in-stock">Loading...</p>
+                        </div>
+                    </article>
+
+                    <article class="stat-card stat-card-low">
+                        <div class="stat-icon">LOW</div>
+                        <div class="stat-info">
+                            <h3>Low Stock</h3>
+                            <p class="stat-value" id="low-stock">Loading...</p>
+                        </div>
+                    </article>
+
+                    <article class="stat-card stat-card-out">
+                        <div class="stat-icon">OOS</div>
+                        <div class="stat-info">
+                            <h3>Out of Stock</h3>
+                            <p class="stat-value" id="out-of-stock">Loading...</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="stats-footnote" aria-label="Operational indicators">
+                    <span class="indicator-pill indicator-pill-neutral">Realtime stock pulse</span>
+                    <span class="indicator-pill indicator-pill-good">Healthy stock visible instantly</span>
+                    <span class="indicator-pill indicator-pill-warn">Low-stock products require attention</span>
+                </div>
+            </section>
+
+            <section class="workspace-grid">
+                <section class="add-product-section" aria-labelledby="add-product-heading">
+                    <div class="section-head">
+                        <h2 id="add-product-heading">Add New Product</h2>
+                        <p class="section-note">Create a product and set opening stock in one step.</p>
+                    </div>
+                    <form id="addProductForm" class="add-product-form">
+                        <div class="form-grid">
+                            <label>
+                                Product Name
+                                <input type="text" name="product_name" id="productName" required maxlength="120">
+                            </label>
+                            <label>
+                                SKU
+                                <input type="text" name="sku" id="productSku" required maxlength="50">
+                            </label>
+                            <label>
+                                Unit Price
+                                <input type="number" name="unit_price" id="unitPrice" min="0" step="0.01" value="0">
+                            </label>
+                            <label>
+                                Quantity
+                                <input type="number" name="quantity" id="productQuantity" min="0" step="1" value="0" required>
+                            </label>
+                            <label>
+                                Min Stock
+                                <input type="number" name="min_stock_level" id="minStockLevel" min="0" step="1" value="0" required>
+                            </label>
+                            <label class="full-width">
+                                Description
+                                <input type="text" name="description" id="productDescription" maxlength="255" placeholder="Optional description">
+                            </label>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" id="addProductBtn" class="primary-btn">Add Product</button>
+                        </div>
+                    </form>
+                </section>
+
+                <aside class="insight-panel" aria-labelledby="insight-heading">
+                    <p class="panel-kicker">Operator Notes</p>
+                    <h2 id="insight-heading">Keep the floor moving.</h2>
+                    <p class="panel-copy">Use the live stats to identify stock pressure fast, then update quantities directly from the table. This dashboard is tuned for quick operational passes rather than heavy reporting.</p>
+                    <div class="insight-list">
+                        <article>
+                            <span>01</span>
+                            <p>Add products with opening quantity and minimum threshold.</p>
+                        </article>
+                        <article>
+                            <span>02</span>
+                            <p>Watch low-stock and out-of-stock counts before they become blockers.</p>
+                        </article>
+                        <article>
+                            <span>03</span>
+                            <p>Update or remove entries directly from the inventory list below.</p>
+                        </article>
+                    </div>
+                </aside>
+            </section>
+
+            <section class="inventory-table-section" aria-labelledby="table-heading">
+                <div class="section-head section-head-table">
+                    <div>
+                        <h2 id="table-heading">Current Inventory</h2>
+                        <p class="section-note">Update quantities or remove products directly from each row.</p>
+                    </div>
+                    <label class="table-search" for="inventorySearch">
+                        <span>Search inventory</span>
+                        <input type="search" id="inventorySearch" placeholder="Find by product name, SKU, or ID">
+                    </label>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="inventory-table">
+                        <thead>
+                            <tr>
+                                <th>Product ID</th>
+                                <th>Product Name</th>
+                                <th>Quantity</th>
+                                <th>Min Stock Level</th>
+                                <th>Status</th>
+                                <th>Last Updated</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventory-tbody">
+                            <tr>
+                                <td colspan="7" class="loading-message">Loading inventory data...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <footer class="poster-footer">
+                <p id="last-update">Last updated: <span id="update-time">Fetching...</span></p>
+                <p class="refresh-note">Auto-refresh every 30 seconds</p>
+                <p class="footer-meta">InventoryOS dashboard built for practical, daily stock operations.</p>
+            </footer>
+        </main>
+    </div>
+
+    <div id="toastRegion" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+    <div id="quantityModal" class="modal-shell" aria-hidden="true">
+        <div class="modal-backdrop" data-close-quantity-modal></div>
+        <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="quantityModalTitle">
+            <button type="button" class="modal-close" data-close-quantity-modal aria-label="Close quantity editor">&times;</button>
+            <p class="modal-kicker">Inventory Update</p>
+            <h2 id="quantityModalTitle">Update quantity</h2>
+            <p id="quantityModalDescription" class="modal-copy">Adjust the selected product quantity.</p>
+            <form id="quantityForm" class="modal-form">
+                <input type="hidden" id="quantityProductId">
+                <label for="quantityInput">
+                    New quantity
+                    <input type="number" id="quantityInput" min="0" step="1" required>
+                </label>
+                <div class="modal-actions">
+                    <button type="button" class="secondary-btn" data-close-quantity-modal>Cancel</button>
+                    <button type="submit" id="quantitySaveBtn" class="primary-btn">Save Quantity</button>
+                </div>
+            </form>
+        </section>
+    </div>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

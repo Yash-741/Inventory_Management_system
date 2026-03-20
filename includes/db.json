@@ -1,0 +1,136 @@
+{
+    "products": [
+        {
+            "product_id": 1,
+            "product_name": "Wireless Mouse",
+            "sku": "SKU-WM-001",
+            "description": "Ergonomic wireless mouse with USB receiver",
+            "unit_price": 25.99
+        },
+        {
+            "product_id": 2,
+            "product_name": "USB-C Cable",
+            "sku": "SKU-UC-002",
+            "description": "High-quality USB-C to USB-A cable",
+            "unit_price": 9.99
+        },
+        {
+            "product_id": 3,
+            "product_name": "Mechanical Keyboard",
+            "sku": "SKU-MK-003",
+            "description": "RGB LED backlit mechanical keyboard",
+            "unit_price": 89.99
+        },
+        {
+            "product_id": 4,
+            "product_name": "Monitor Stand",
+            "sku": "SKU-MS-004",
+            "description": "Adjustable dual monitor stand",
+            "unit_price": 49.99
+        },
+        {
+            "product_id": 5,
+            "product_name": "Desk Lamp",
+            "sku": "SKU-DL-005",
+            "description": "LED desk lamp with USB charging",
+            "unit_price": 35.99
+        },
+        {
+            "product_id": 6,
+            "product_name": "External SSD",
+            "sku": "SKU-ES-006",
+            "description": "500GB portable external SSD",
+            "unit_price": 69.99
+        },
+        {
+            "product_id": 7,
+            "product_name": "Phone Charger",
+            "sku": "SKU-PC-007",
+            "description": "Fast USB-C phone charger",
+            "unit_price": 19.99
+        },
+        {
+            "product_id": 8,
+            "product_name": "Webcam HD",
+            "sku": "SKU-WC-008",
+            "description": "1080p HD webcam with microphone",
+            "unit_price": 59.99
+        },
+        {
+            "product_id": 9,
+            "product_name": "Network Cable",
+            "sku": "SKU-NC-009",
+            "description": "Cat6 Ethernet network cable",
+            "unit_price": 12.99
+        },
+        {
+            "product_id": 10,
+            "product_name": "Power Bank",
+            "sku": "SKU-PB-010",
+            "description": "20000mAh portable power bank",
+            "unit_price": 29.99
+        }
+    ],
+    "inventory": [
+        {
+            "product_id": 1,
+            "quantity": 45,
+            "min_stock_level": 15,
+            "last_updated": "2026-02-07T10:30:00Z"
+        },
+        {
+            "product_id": 2,
+            "quantity": 120,
+            "min_stock_level": 30,
+            "last_updated": "2026-02-07T10:28:45Z"
+        },
+        {
+            "product_id": 3,
+            "quantity": 8,
+            "min_stock_level": 5,
+            "last_updated": "2026-02-07T10:15:22Z"
+        },
+        {
+            "product_id": 4,
+            "quantity": 22,
+            "min_stock_level": 10,
+            "last_updated": "2026-02-07T09:45:10Z"
+        },
+        {
+            "product_id": 5,
+            "quantity": 77,
+            "min_stock_level": 10,
+            "last_updated": "2026-03-06T06:07:22Z"
+        },
+        {
+            "product_id": 6,
+            "quantity": 5,
+            "min_stock_level": 8,
+            "last_updated": "2026-02-07T08:50:15Z"
+        },
+        {
+            "product_id": 7,
+            "quantity": 150,
+            "min_stock_level": 50,
+            "last_updated": "2026-02-07T10:32:00Z"
+        },
+        {
+            "product_id": 8,
+            "quantity": 12,
+            "min_stock_level": 5,
+            "last_updated": "2026-02-07T10:00:45Z"
+        },
+        {
+            "product_id": 9,
+            "quantity": 75,
+            "min_stock_level": 20,
+            "last_updated": "2026-02-07T09:30:20Z"
+        },
+        {
+            "product_id": 10,
+            "quantity": 0,
+            "min_stock_level": 10,
+            "last_updated": "2026-02-07T07:15:00Z"
+        }
+    ]
+}
