@@ -1,11 +1,11 @@
 # Inventory Management System
 
-A lightweight web-based inventory dashboard with login/session authentication and JSON-backed APIs.
+A lightweight web-based inventory dashboard with login/session authentication and a SQLite-backed PHP API.
 
 ## Header
 - Project: Inventory Management System
-- Stack: HTML, CSS, JavaScript, PHP
-- Data Storage: JSON files (`includes/db.json`, `includes/users.json`)
+- Stack: HTML, CSS, JavaScript, PHP, SQLite
+- Data Storage: SQLite (`includes/inventory.sqlite`) seeded from `includes/db.json` and `includes/users.json`
 - Entry Pages: `login.html`, `index.html`
 
 ## Important Components
@@ -21,13 +21,14 @@ A lightweight web-based inventory dashboard with login/session authentication an
 ### Backend
 - `includes/auth.php`: Login, logout, session check, token generation, and login attempt logging.
 - `includes/api.php`: Inventory API (get all items, stats, single product, update quantity).
+- `includes/sqlite.php`: SQLite connection, schema bootstrap, and seed import.
 - `includes/config.php`: MySQL config file (present in project, but current API flow uses JSON storage).
 
 ### Data Files
-- `includes/db.json`: Product and inventory data source used by `api.php`.
-- `includes/users.json`: User credentials and roles used by `auth.php`.
-- `includes/login_attempts.log`: Authentication activity/failed-attempt logs.
-- `database/schema.sql`: SQL schema reference.
+- `includes/inventory.sqlite`: Generated SQLite database file for local runs.
+- `includes/db.json`: Seed product and inventory data used to initialize SQLite.
+- `includes/users.json`: Seed user credentials and roles used to initialize SQLite.
+- `database/schema.sql`: Legacy SQL schema reference.
 
 ## API Endpoints
 
@@ -52,10 +53,11 @@ A lightweight web-based inventory dashboard with login/session authentication an
 ## Vercel Deploy
 - This project includes `vercel.json` and PHP function wrappers in `api/` for Vercel.
 - Login works on Vercel through `api/auth.php`.
-- Inventory JSON writes are redirected to the runtime temp directory, so changes are not durable across cold starts or redeploys.
-- For persistent production inventory data on Vercel, replace the JSON storage with a database or Vercel-managed storage.
+- On Vercel, the SQLite file is created in temporary runtime storage when the packaged filesystem is not writable.
+- That means SQLite changes are not durable across cold starts or redeploys on Vercel.
+- For persistent production data on Vercel, move SQLite to persistent storage or replace it with a hosted database.
 
 ## Notes
-- Current implementation is file-based (JSON), so no DB setup is required for normal usage.
+- No manual DB setup is required for normal usage; SQLite is created automatically on first run.
 - Replace demo/plain-text passwords in `users.json` with hashed passwords for production.
 - Restrict CORS and disable debug-style behavior before deployment.
